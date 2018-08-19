@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
+const userRoutes = require("./api/routes/users");
 
 // Instantiate express app
 const app = express();
@@ -37,6 +38,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// Routes which should handle requests
+app.use("/api/users", userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
