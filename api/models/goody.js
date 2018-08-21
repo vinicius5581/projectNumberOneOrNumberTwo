@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const goodySchema = new mongoose.Schema({
+const goodySchema = new mongoose.Sch();
+ema({
   _id: mongoose.Schema.Types.ObjectId,
   label: {
     type: String,
