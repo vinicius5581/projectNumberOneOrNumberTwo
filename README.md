@@ -26,6 +26,36 @@ This project is open for colaboration. Please get in touch if you want to join o
 
 ### Run the backend server
 
+Create a project with google apis and then create a credentials. We are going to need a clientID and clientSecret. While there, add the development URL, http://localhost.com:3000, to the authorized JavasScript origins and add the authorized redirect url as well, http://localhost.com:3000/auth/google/redirect.
+
+Once you have those credentials, add them to `projectH/config/keys.js`:
+
+```javascript
+module.exports = {
+  ...
+  google: {
+    clientID: "GOOGLE_CLIENT_ID",
+    clientSecret: "GOOGLE_CLIENT_SECRET"
+  },
+  ...
+}
+```
+
+Create a database on mongo, add a user and password to the database, and then add the following to `projectH/config/keys.js`.
+
+```javascript
+module.exports = {
+  ...
+  mongodb: {
+    MONGO_US: "DATABASE_USERNAME",
+    MONGO_PW: "DATABASE_PASSWORD",
+    MONGO_SR: "DATABASE_SERVER",
+    MONGO_DB: "DATABASE_NAME",
+  },
+  ...
+}
+```
+
 ```bash
 cd ~/projectH
 yarn server

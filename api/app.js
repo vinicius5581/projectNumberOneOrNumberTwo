@@ -2,8 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const keys = require("./config/keys");
-const userRoutes = require("./api/routes/users");
+const keys = require("../config/keys");
+const userRoutes = require("./routes/users");
+const authRoutes = require("./routes/auth");
+const restroomsRoutes = require("./routes/restrooms");
 
 // Instantiate express app
 const app = express();
@@ -16,14 +18,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Connect to mongodb
-mongoose
-  .connect(
-    keys.mongodb.MONGO_URI,
-    {
-      useNewUrlParser: true
-    }
-  )
-  .then(() => console.log("Connected to mongodb..."));
+mongoose.connect(
+  `mongodb://${keys.mongodb.MONGO_US}:${keys.mongodb.MONGO_PW}@${
+    keys.mongodb.MONGO_SR
+  }/${keys.mongodb.MONGO_DB}`,
+  {
+    useNewUrlParser: true
+  },
+  () => console.log("Connected to mongodb...")
+);
 
 // CORS config
 app.use((req, res, next) => {
@@ -41,6 +44,8 @@ app.use((req, res, next) => {
 
 // Routes which should handle requests
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/restrooms", restroomsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
