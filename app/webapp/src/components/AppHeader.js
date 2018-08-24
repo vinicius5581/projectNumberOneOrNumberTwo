@@ -1,75 +1,41 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './AppHeader.scss';
 
 export default class AppHeader extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-  render() {
-    return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <header className="app-header">
+                <nav>
+                    <ul>
+                        <li>
+                            <NavLink to="/restrooms" activeClassName="selected">
+                                Restrooms
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/favorites" activeClassName="selected">
+                                Favorites
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/history" activeClassName="selected">
+                                History
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/create-restroom" activeClassName="selected">
+                                Add a restroom
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/profile" activeClassName="selected">
+                                Profile
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        );
+    }
 }
-
-Navbar.propTypes = {
-  light: PropTypes.bool,
-  dark: PropTypes.bool,
-  fixed: PropTypes.string,
-  color: PropTypes.string,
-  role: PropTypes.string,
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
-  // pass in custom element to use
-};

@@ -1,20 +1,15 @@
-import React, { Component } from "react";
-
-import AppHeader from "./AppHeader";
-import AppMain from "./AppMain";
-import AppFooter from "./AppFooter";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Root from './Root';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <AppHeader />
-        <AppMain />
-        <AppFooter />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <Root />
+            </Router>
+        );
+    }
 }
 
 export default App;

@@ -1,20 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import './AppFooter.scss';
 
 class AppFooter extends Component {
-  render() {
-    return (
-      <footer>
-        <nav>
-          <ul>
-            <li>spots</li>
-            <li>sessions</li>
-            <li>memories</li>
-            <li>friends</li>
-          </ul>
-        </nav>
-      </footer>
-    );
-  }
+    render() {
+        return (
+            <footer className="app-footer">
+                <p>Number 1 or Number 2?</p>
+            </footer>
+        );
+    }
 }
 
 export default AppFooter;
